@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/UserService/obj
+/.vs/dotnet_sample_microservice_structure
+/UserService/bin/Debug/netcoreapp3.1
