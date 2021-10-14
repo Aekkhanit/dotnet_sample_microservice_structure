@@ -35,7 +35,7 @@ namespace UserService.Controllers.v1
         {
             //declare your validation from body post
             var _valid = request != null && !string.IsNullOrEmpty(request.username) && !string.IsNullOrEmpty(request.password);
-            var token = await Task.FromResult(_IJwtHelper.GenerateToken(request.username));
+            var token = await _IJwtHelper.GenerateTokenAsync(request.username);
             if (_valid)
                 return Ok(token);
             return Unauthorized();

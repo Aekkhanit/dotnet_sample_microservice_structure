@@ -13,7 +13,7 @@ namespace UserService.Helpers
 
     public interface IJwtHelper
     {
-        string GenerateToken(string username);
+        Task<string> GenerateTokenAsync(string username);
     }
     public class JwtHelper : IJwtHelper
     {
@@ -24,7 +24,7 @@ namespace UserService.Helpers
             _Configuration = configuration;
         }
 
-        public string GenerateToken(string username)
+        public async Task<string> GenerateTokenAsync(string username)
         {
             SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_Configuration["Jwt:Key"]));
             SigningCredentials creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -49,7 +49,7 @@ namespace UserService.Helpers
 
             SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return tokenHandler.WriteToken(token);
+            return await Task.FromResult(tokenHandler.WriteToken(token));
         }
 
     }

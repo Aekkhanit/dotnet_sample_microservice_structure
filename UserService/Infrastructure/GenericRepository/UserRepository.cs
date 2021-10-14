@@ -35,7 +35,7 @@ namespace UserService.Infrastructure.GenericRepository
 
                 return new TB_User()
                 {
-                    Username = "aaa",
+                    Username = "user_a",
                     Email = email,
                     First_Name = "aaa",
                     Last_Name = "bbb",

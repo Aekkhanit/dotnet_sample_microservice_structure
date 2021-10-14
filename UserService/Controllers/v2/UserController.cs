@@ -36,7 +36,7 @@ namespace UserService.Controllers.v2
             //declare your validation from body post
             var _valid = request != null && !string.IsNullOrEmpty(request.email) && !string.IsNullOrEmpty(request.email);
             if (_valid)
-                return Ok(await Task.FromResult(_IJwtHelper.GenerateToken(request.email)));
+                return Ok(await _IJwtHelper.GenerateTokenAsync(request.email));
             return Unauthorized();
         }
 
@@ -45,7 +45,7 @@ namespace UserService.Controllers.v2
         {
             var _email = _IHttpContextAccessor.HttpContext.User.Identity.Name;
             if (!string.IsNullOrEmpty(_email))
-                return Ok(_IUserModule.GetUserInfoFromEmailAsync(_email));
+                return Ok(await _IUserModule.GetUserInfoFromEmailAsync(_email));
             return Unauthorized();
         }
 
