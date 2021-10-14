@@ -1,0 +1,2 @@
+# dotnet_sample_microservice_structure
+Sample dotnet project of mircroservice architecture
